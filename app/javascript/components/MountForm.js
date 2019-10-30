@@ -1,35 +1,24 @@
-import React from "react"
-import PropTypes from "prop-types"
+import React from 'react'
+import useForm from 'react-hook-form'
 
-class MountForm extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {name: ''};
+export default function MountForm() {
+  const { register, handleSubmit, watch, errors } = useForm()
+  const onSubmit = data => { console.log(data) }
 
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-  }
+  console.log(`name is ${watch('name')}`) // watch input value by passing the name of it
+  console.log(`height is ${watch('height')}`) // watch input value by passing the name of it
 
-  handleChange(event) {
-    this.setState({name: event.target.value});
-  }
-
-  handleSubmit(event) {
-    alert('A name was submitted: ' + this.state.name);
-    event.preventDefault();
-  }
-
-  render() {
-    return (
-      <form onSubmit={this.handleSubmit}>
-        <label>
-          Name:
-          <input type="text" value={this.state.name} onChange={this.handleChange} />
-        </label>
-        <input type="submit" value="Submit" />
-      </form>
-    );
-  }
+  return (
+    <form onSubmit={handleSubmit(onSubmit)}>
+    {/* register your input into the hook by invoking the "register" function */}
+      <input name="name" defaultValue="" ref={register} />
+      
+      {/* include validation with required or other standard HTML validation rules */}
+      <input name="height" ref={register({ required: true })} />
+      {/* errors will return when field validation fails  */}
+      {errors.height && <span>This field is required</span>}
+      
+      <input type="submit" />
+    </form>
+  )
 }
-
-export default MountForm
