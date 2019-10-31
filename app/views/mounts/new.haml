@@ -1,3 +1,3 @@
 %h1 New mount
-
-= react_component("MountForm")
+- csrf_token = form_authenticity_token 
+= react_component("MountForm", {csrf: csrf_token})
