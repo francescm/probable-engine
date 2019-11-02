@@ -1,5 +1,6 @@
 import React from "react"
 import PropTypes from "prop-types"
+import Mount from './Mount';
 import MountList from './MountList';
 import MountForm from './MountForm';
 
@@ -12,19 +13,23 @@ class MountEditor extends React.Component {
 
   handleMountSubmit = (data) => {
 	  const csrf = this.props.csrf;
-	  var mounts = this.state.mounts;
+	  let mounts = this.state.mounts;
+	  let response = "";
 	  console.log(data);
-	  fetch('/mounts', {
+	  fetch('/mounts.json', {
 		  method: 'POST',
 		  headers: {
                     'Content-Type': 'application/json',
                     'X-CSRF-Token': csrf
                   },		  
 		  body: JSON.stringify(data),
-	  });
-    mounts.push(data);	  
-    this.setState({mounts: mounts});
-    console.log(this.state);
+	  }).then(response => response.json())
+	    .then(new_mount => { 
+	  	console.log(`mount is ${new_mount}`);
+    		mounts.push(new_mount);  
+    		this.setState({mounts: mounts});
+    		console.log(this.state);
+	    });
   }
 
   render () {

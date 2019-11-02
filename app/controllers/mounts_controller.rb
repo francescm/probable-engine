@@ -12,6 +12,10 @@ class MountsController < ApplicationController
   def create
     @mount = Mount.new(post_params(:name, :height))
     @mount.save
+    respond_to do |format|
+      format.html
+      format.json { render json: @mount }
+    end
     #redirect_to mount_path(@mount)
   end  
   def edit
