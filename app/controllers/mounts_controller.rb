@@ -6,12 +6,13 @@ class MountsController < ApplicationController
     @mount = find_mount_id
   end  
   def new
-    @mount = Mount.new
+    @mounts = all_mounts
+    #@mount = Mount.new
   end  
   def create
     @mount = Mount.new(post_params(:name, :height))
     @mount.save
-    redirect_to mount_path(@mount)
+    #redirect_to mount_path(@mount)
   end  
   def edit
     @mount = find_mount_id
