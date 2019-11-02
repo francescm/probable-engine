@@ -3,5 +3,7 @@
 %p
   = react_component("HelloWorld", { greeting: "Hello from react-rails." })
 %p
+  = react_component("MountList", { mounts: @mounts })
+%p
   Add mount
   =link_to "form", new_mount_path
