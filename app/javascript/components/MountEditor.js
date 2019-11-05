@@ -1,6 +1,5 @@
 import React from "react"
 import PropTypes from "prop-types"
-import Mount from './Mount';
 import MountList from './MountList';
 import MountForm from './MountForm';
 

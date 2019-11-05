@@ -1,9 +1,7 @@
-import React from "react"
-import PropTypes from "prop-types"
-class MountList extends React.Component {
-	
-  render () {
-    const mounts = this.props.mounts;   
+import  React from "react"
+
+const MountList = (params) => {
+    const { mounts } = params;	
     return (
       <React.Fragment>
         <h2>Mounts</h2>
@@ -16,10 +14,7 @@ class MountList extends React.Component {
 	    </ul>
       </React.Fragment>
     );
-  }
-}
 
-MountList.propTypes = {
-  mounts: PropTypes.array
 };
+
 export default MountList
