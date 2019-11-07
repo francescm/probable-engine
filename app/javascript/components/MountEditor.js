@@ -10,7 +10,7 @@ const MountEditor = (params) => {
       <React.Fragment>
 	<MountList mounts={mounts} />
 	<MountForm 
-	    onSubmit={setMounts}
+	    setMounts={setMounts}
 	    mounts={mounts}
 	    csrf={csrf}/>
       </React.Fragment>

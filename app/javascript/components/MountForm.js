@@ -10,7 +10,6 @@ export default function MountForm(params) {
 
   return (
     <form onSubmit={handleSubmit((data) => {
-	  let new_mounts = mounts;
 	  let response = "";
 	  console.log(data);
 	  fetch('/mounts.json', {
@@ -23,7 +22,7 @@ export default function MountForm(params) {
 	  }).then(response => response.json())
 	    .then(new_mount => { 
 	  	console.log(`mount is ${new_mount}`);
-    		new_mounts.push(new_mount);  
+    		const new_mounts = mounts.push(new_mount);  
     		setMounts(new_mounts);
     		console.log(new_mounts);
  	});
