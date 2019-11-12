@@ -1,6 +1,10 @@
 class MountsController < ApplicationController
   def index
     @mounts = all_mounts
+    respond_to do |format|
+      format.html
+      format.json { render json: @mounts }
+    end
   end  
   def show
     @mount = find_mount_id
@@ -20,7 +24,7 @@ class MountsController < ApplicationController
   end  
   def edit
     @mount = find_mount_id
-  end  
+  end
   def update
     @mount = find_mount_id
     @mount.update(post_params(:name, :height))

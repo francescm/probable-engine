@@ -2,7 +2,7 @@ import React from 'react'
 import useForm from 'react-hook-form'
 
 export default function MountForm(params) {
-  const { setMounts, mounts, csrf } = params;
+  const { setTrigger, trigger, csrf } = params;
   const { register, handleSubmit, watch, errors } = useForm()
 
   console.log(`name is ${watch('name')}`) // watch input value by passing the name of it
@@ -19,13 +19,7 @@ export default function MountForm(params) {
                     'X-CSRF-Token': csrf
                   },		  
 		  body: JSON.stringify(data),
-	  }).then(response => response.json())
-	    .then(new_mount => { 
-	  	console.log(`mount is ${new_mount}`);
-    		const new_mounts = mounts.push(new_mount);  
-    		setMounts(new_mounts);
-    		console.log(new_mounts);
- 	});
+	  }).then(() => setTrigger(trigger + 1));
     })
     }>
     {/* register your input into the hook by invoking the "register" function */}

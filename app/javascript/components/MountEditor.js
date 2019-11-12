@@ -4,14 +4,14 @@ import MountForm from './MountForm';
 
 const MountEditor = (params) => {
   const { csrf, mymounts } = params;	
-  const [ mounts, setMounts ] = useState(mymounts);
+  const [ trigger, setTrigger ] = useState(0);
 
   return (
       <React.Fragment>
-	<MountList mounts={mounts} />
+	<MountList trigger={trigger}/>
 	<MountForm 
-	    setMounts={setMounts}
-	    mounts={mounts}
+	    setTrigger={setTrigger}
+	    trigger={trigger}
 	    csrf={csrf}/>
       </React.Fragment>
     );

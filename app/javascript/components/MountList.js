@@ -1,7 +1,18 @@
-import  React from "react"
+import  React, { useState, useEffect } from "react"
 
 const MountList = (params) => {
-    const { mounts } = params;	
+    const { trigger } = params;
+    const [mounts, setMounts] = useState([]);	
+    
+    async function fetchMountsData() {
+      const response = await fetch("/mounts.json");
+      setMounts(await response.json());
+    }
+
+    useEffect(() => {
+      fetchMountsData(); 
+    }, [trigger]);
+
     return (
       <React.Fragment>
         <h2>Mounts</h2>
