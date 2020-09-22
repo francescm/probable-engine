@@ -1,9 +1,15 @@
-# README
+# probable engine
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+My javascript/react.js testbed.
 
-Things you may want to cover:
+## setup
+
+    bundle install
+    brew install yarn
+    yarn install --check-files
+    bundle exec rake db:migrate
+    bundle exec rake webpacker:binstubs
+    bundle exec rake webpacker:install
 
 * Ruby version
 
